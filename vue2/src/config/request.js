@@ -18,8 +18,8 @@ module.exports = {
 		 * @param {string} data.password 登陆密码
 		 * @param {function} fn 成功回调
 		 */
-		login(data, fn, errFn) {
-			ajax.call(this, 'post', '/Login/login', data, fn, true, errFn);
+		login(data, fn, opts) {
+			ajax.call(this, 'post', '/Login/login', data, fn, opts);
 		},
 
 		/**
@@ -200,17 +200,17 @@ module.exports = {
 	 * @type {Object}
 	 */
 	open: {
-		
+
 		/**
 		 * 上传七牛图片
 		 * @param data
 		 * @param fn
 		 */
-		uploadQiniuFile(data,fn){
-			
+		uploadQiniuFile(data, fn, opts) {
+			ajax.call(this, 'post', '', data, fn, opts);
 		},
-		
-		
+
+
 		/**
 		 * 获取七牛上传图片token
 		 * @param  {Function} fn 成功回调
@@ -227,13 +227,13 @@ module.exports = {
 		getQiniuFileList(fn) {
 			ajax.call(this, 'get', '/Open/getQiniuFileList', {}, fn);
 		},
-		
+
 		/**
 		 * 删除七牛文件
 		 * @param  {object}   data 参数
 		 * @param  {Function} fn 成功回调
 		 */
-		deleteQiniuFile(data,fn){
+		deleteQiniuFile(data, fn) {
 			ajax.call(this, 'post', '/Open/deleteQiniuFile', data, fn);
 		}
 	}

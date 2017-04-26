@@ -82,8 +82,11 @@ module.exports = {
                         });
                     }, () => {
                         this.login_actions.disabled = false;
-                    }, () => {
-                        this.login_actions.disabled = false;
+                    }, {
+                        tokenFlag: true,
+                        errFn: () => {
+                            this.login_actions.disabled = false;
+                        }
                     });
                 }
             });

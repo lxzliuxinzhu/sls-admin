@@ -1,5 +1,11 @@
 <template>
     <div class="left" :style="{'height':win_size.height,'width':$store.state.leftmenu.width}" id='admin-left'>
+        <div class="toggle-menu" 
+            @click='toggleMenu'
+            :style='{left:$store.state.leftmenu.width}'>
+            <i 
+                :class='{"el-icon-arrow-left":$store.state.leftmenu.menu_flag,"el-icon-arrow-right":!$store.state.leftmenu.menu_flag}'></i>
+        </div>
         <div id='left-menu'>
             <el-row class='tac'
                 v-for="(route,index) in $router.options.routes" 
@@ -55,9 +61,9 @@
                     </el-menu>
                 </el-col>
             </el-row>
-            <div class="toggle-menu" @click='toggleMenu'>
+            <!-- <div class="toggle-menu" @click='toggleMenu'>
                 <i class='el-icon-arrow-left'></i>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -147,21 +153,25 @@
         background: #324057;
         position: relative;
         overflow-x: hidden;
-        
+    }
+    .toggle-menu{
+        width: 40px;
+        height: 40px;
+        background: #1f2f3d;
+        position: absolute;
+        top: 0px;
+        /*left: 190px;*/
+        z-index: 1000;
+        cursor: pointer;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+        opacity: 0.2;
+        transition: opacity .3s ease-out;
 
-        .toggle-menu{
-            width: 100%;
-            height: 50px;
-            background: #1f2f3d;
-            position: absolute;
-            bottom: 50px;
-            left: 0px;
-            z-index: 1000;
-            cursor: pointer;
-            line-height: 40px;
-            text-align: center;
-            color: #fff;
-            font-size: 14px;
+        &:hover{
+            opacity:1;
         }
     }
 </style>

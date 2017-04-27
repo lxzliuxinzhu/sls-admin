@@ -43,10 +43,10 @@ module.exports = function(type, url, data, fn, {
 		var datas = data;
 	}
 
-	Vue.axios({
+	/*Vue.axios({
 		method: type,
 		url: host || url,
-		data: data,
+		params: data,
 		headers: headers
 	}).then((res) => {
 		this.$store.dispatch('hide_loading');
@@ -72,14 +72,15 @@ module.exports = function(type, url, data, fn, {
 		cbs.requestError.call(this, err);
 
 		errFn && errFn.call(this);
-	});
+	});*/
 
-	/*Vue.axios[type](host || url, datas).then((res) => {
+	Vue.axios[type](host || url, datas).then((res) => {
+		
 		if (res.data.status === 200) {
-			// console.dir(res.data);
+			
 			fn(res.data.data);
 		} else {
-
+			this.$store.dispatch('hide_loading');
 			// 调用全局配置错误回调
 			cbs.statusError.call(this, res.data);
 
@@ -87,16 +88,11 @@ module.exports = function(type, url, data, fn, {
 				errFn && errFn.call(this);
 			}
 		}
-		this.$store.dispatch('hide_loading');
 	}).catch((err) => {
-
-		//调用全局配置错误回调
-		// console.log(err);
-
 		this.$store.dispatch('hide_loading');
 		cbs.requestError.call(this, err);
 
 		errFn && errFn.call(this);
-	});*/
+	});
 
 };

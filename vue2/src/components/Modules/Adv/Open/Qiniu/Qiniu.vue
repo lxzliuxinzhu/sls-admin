@@ -1,22 +1,22 @@
 <template>
     <div>
         <list-data
-            ref='list-data'
-            :ImageHost='image_host'
-            :List='list'
-            :FieldList='fields'
-            :Selection='true'
-            @onDelete="onDelete"
-            @onGetInfo="onGetInfo"></list-data>
+                ref='list-data'
+                :ImageHost='image_host'
+                :List='list'
+                :FieldList='fields'
+                :Selection='true'
+                @onDelete="onDelete"
+                @onGetInfo="onGetInfo"></list-data>
 
 
         <el-upload
-            class="upload-demo"
-            drag
-            action="/slsAdminQiniu/"
-            :data="params"
-            :before-upload="onUploadQiniu"
-            multiple>
+                class="upload-demo"
+                drag
+                action="/slsAdminQiniu/"
+                :data="params"
+                :before-upload="onUploadQiniu"
+                multiple>
             <i class="el-icon-upload"></i>
             <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
             <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
@@ -34,13 +34,13 @@
     </div>
 </template>
 <script>
-    import QiniuJs from './Qiniu.js';
-    module.exports=QiniuJs;
+	import QiniuJs from './Qiniu.js';
+	module.exports = QiniuJs;
 </script>
 <style scoped>
-    .qiniu-pic{
-        max-width:100%;
-        height:auto;
-        margin:0 auto;
+    .qiniu-pic {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
     }
 </style>
